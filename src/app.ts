@@ -1,9 +1,13 @@
 import express from "express"
 import { conexionDB } from './database/database'
+import { vendedorRouter } from "./vendedor/infraestructura/vendedorRoutes"
 
-const app = express()
 
-app.use(express.json())
+
+const app = express();
+
+app.use(express.json());
+app.use('/vendedores', vendedorRouter);
 
 async function connectionToServer() {
     try {

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { createVendedorUseCase } from "../../aplicacion/createVendedorUseCase";
+import { CreateVendedorUseCase } from "../../aplicacion/createVendedorUseCase";
 
-export class createVendedorController {
-    constructor( readonly createVendedorUseCase: createVendedorUseCase) {}
+export class CreateVendedorController { // Aquí se define el comportamiento que tendrá la clase.
+    constructor( readonly createVendedorUseCase: CreateVendedorUseCase) {}
 
     async run(req: Request, res: Response) {
         const data = req.body
@@ -18,7 +18,7 @@ export class createVendedorController {
                 res.status(201).send({
                     status: "sucess",
                     data: {
-                        id: vendedor?.id,
+                        // id: vendedor?.id,
                         name: vendedor?.name,
                         lastName: vendedor?.lastName
                     }

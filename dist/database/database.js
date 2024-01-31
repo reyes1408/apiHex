@@ -12,23 +12,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const database_1 = require("./database/database");
-const vendedorRoutes_1 = require("./vendedor/infraestructura/vendedorRoutes");
-const app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use('/vendedores', vendedorRoutes_1.vendedorRouter);
-function connectionToServer() {
+exports.conexionDB = exports.sequelize = void 0;
+const sequelize_typescript_1 = require("sequelize-typescript");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+exports.sequelize = new sequelize_typescript_1.Sequelize({
+    dialect: 'mysql',
+    host: process.env.DB_HOST,
+    database: process.env.DATABASE,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: 3306
+});
+//Conexión con la base de datos
+function conexionDB() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield (0, database_1.conexionDB)();
-            app.listen(3000, () => {
-                console.log("Servidor corriendo en el puerto 3000");
+            yield exports.sequelize.authenticate();
+            console.log("Conexión exitosa a la base de datos.");
+            yield exports.sequelize.sync({
+                force: false
             });
         }
         catch (error) {
-            console.log("No se pudo establecer conexion con el servidor.", error);
+            console.log("No se pudo establecer conexion con la base de datos", error);
         }
     });
 }
-connectionToServer();
+exports.conexionDB = conexionDB;

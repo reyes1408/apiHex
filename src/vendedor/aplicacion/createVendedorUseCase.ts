@@ -1,7 +1,7 @@
 import { Vendedor } from "../dominio/vendedor";
 import { VendedorRepository } from "../dominio/vendedorRepository"
 
-export class createVendedorUseCase {
+export class CreateVendedorUseCase {
 
     constructor(readonly vendedorRepository: VendedorRepository){}
 
@@ -21,6 +21,4 @@ export class createVendedorUseCase {
             return null
         }
     }
-
 }
-
