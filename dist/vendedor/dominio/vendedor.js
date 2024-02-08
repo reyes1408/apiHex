@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Vendedor = void 0;
 class Vendedor {
-    constructor(
-    // readonly id: number,
-    name, lastName) {
+    constructor(id, name, lastName) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
     }

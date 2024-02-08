@@ -17,14 +17,14 @@ const vendedor_1 = require("../dominio/vendedor");
 const vendedor_model_1 = __importDefault(require("./model/vendedor.model"));
 //En las dependencias se define los metodos que modelamos en vendedorRepository
 class DBvendedorRepository {
-    createVendedor(name, lastName) {
+    createVendedor(id, name, lastName) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const vendedorNuevo = yield vendedor_model_1.default.create({ name, lastName });
-                return new vendedor_1.Vendedor(vendedorNuevo.name, vendedorNuevo.lastName);
+                const vendedorNuevo = yield vendedor_model_1.default.create({ id, name, lastName });
+                return new vendedor_1.Vendedor(vendedorNuevo.id, vendedorNuevo.name, vendedorNuevo.lastName);
             }
             catch (error) {
-                console.log("Error en dependecies, createVendedor", error);
+                console.log("Error en archivo (dependecies), createVendedor", error);
                 return null;
             }
         });

@@ -10,6 +10,7 @@ export class CreateVendedorController { // Aquí se define el comportamiento que
         try {
             
             const vendedor = await this.createVendedorUseCase.run(
+                data.id,
                 data.name,
                 data.lastName
             );

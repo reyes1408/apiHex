@@ -14,14 +14,14 @@ class CreateVendedorUseCase {
     constructor(vendedorRepository) {
         this.vendedorRepository = vendedorRepository;
     }
-    run(name, lastName) {
+    run(id, name, lastName) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const vendedorCreated = yield this.vendedorRepository.createVendedor(name, lastName);
+                const vendedorCreated = yield this.vendedorRepository.createVendedor(id, name, lastName);
                 return vendedorCreated;
             }
             catch (error) {
-                console.log("Error en el archivo createvendedorUseCase", error);
+                console.log("Error en el archivo (createvendedorUseCase)", error);
                 return null;
             }
         });

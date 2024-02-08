@@ -7,6 +7,7 @@ export interface VendedorRepository {
     getAll(): Promise <Vendedor [] | null>;
 
     createVendedor(
+        id: number,
         name: string, 
         lastName: string
     ): Promise <Vendedor | null>

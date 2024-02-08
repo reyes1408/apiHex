@@ -18,7 +18,7 @@ class CreateVendedorController {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
             try {
-                const vendedor = yield this.createVendedorUseCase.run(data.name, data.lastName);
+                const vendedor = yield this.createVendedorUseCase.run(data.id, data.name, data.lastName);
                 if (vendedor) {
                     res.status(201).send({
                         status: "sucess",

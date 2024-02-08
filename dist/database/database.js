@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.conexionDB = exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const dotenv_1 = __importDefault(require("dotenv"));
+const vendedor_model_1 = __importDefault(require("../vendedor/infraestructura/model/vendedor.model"));
 dotenv_1.default.config();
 exports.sequelize = new sequelize_typescript_1.Sequelize({
     dialect: 'mysql',
@@ -22,7 +23,8 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     database: process.env.DATABASE,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    port: 3306
+    port: 3306,
+    models: [vendedor_model_1.default]
 });
 //Conexión con la base de datos
 function conexionDB() {

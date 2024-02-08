@@ -5,7 +5,7 @@ export class getAllVendedorController {
     constructor(readonly GetAllVendedorUseCase: GetAllVendedorUseCase) {}
 
     async run (req: Request, res: Response) {
-        const data = req.body
+        //const data = req.body
 
         try {
             

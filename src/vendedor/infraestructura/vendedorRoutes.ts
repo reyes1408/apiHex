@@ -3,7 +3,7 @@ import { createVendedorController } from "./dependencies";
 
 export const vendedorRouter = Router();
 
-vendedorRouter.post('/', (req, res) => {
+vendedorRouter.post('/crear', (req, res) => {
 
     createVendedorController.run(req, res)
     .then(() => {

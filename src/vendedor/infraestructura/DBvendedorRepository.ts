@@ -1,23 +1,23 @@
 import { Vendedor } from "../dominio/vendedor";
 import { VendedorRepository } from "../dominio/vendedorRepository";
-import modelVendedor from "./model/vendedor.model"
+import ModelVendedor from "./model/vendedor.model"
 
 //En las dependencias se define los metodos que modelamos en vendedorRepository
 export class DBvendedorRepository implements VendedorRepository{
 
-    async createVendedor(name: string, lastName: string): Promise <Vendedor | null> {
+    async createVendedor(id:number, name: string, lastName: string): Promise <Vendedor | null> {
         try {
-            const vendedorNuevo = await modelVendedor.create({ name, lastName })
-            return new Vendedor(vendedorNuevo.name, vendedorNuevo.lastName)
+            const vendedorNuevo = await ModelVendedor.create({ id, name, lastName });
+            return new Vendedor(vendedorNuevo.id ,vendedorNuevo.name, vendedorNuevo.lastName)
         } catch (error) {
-            console.log("Error en dependecies, createVendedor", error);
+            console.log("Error en archivo (dependecies), createVendedor", error);
             return null
         }
     }
 
     async getAll(): Promise <Vendedor[] | null> {
         try {
-            const vendedoresFound = await modelVendedor.findAll();
+            const vendedoresFound = await ModelVendedor.findAll();
             return vendedoresFound
 
         } catch (error) {
@@ -28,7 +28,7 @@ export class DBvendedorRepository implements VendedorRepository{
 
     async deleteVendedor(id: number): Promise <boolean> {
         try {
-            const vendedordeleted = await modelVendedor.destroy({
+            const vendedordeleted = await ModelVendedor.destroy({
                 where: {
                     id: id,
                 }

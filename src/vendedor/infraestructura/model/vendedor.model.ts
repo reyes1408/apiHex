@@ -5,11 +5,11 @@ import { DataType, Column, Model, Table } from "sequelize-typescript";
     timestamps: false
 })
 
-class modelVendedor extends Model {
+class ModelVendedor extends Model {
     @Column({
         type: DataType.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        // autoIncrement: true,
     }) public id !: number;
 
     @Column({
@@ -21,5 +21,5 @@ class modelVendedor extends Model {
         type: DataType.STRING,
         allowNull: false
     }) public lastName !: string;
-    
-} export default modelVendedor;
+
+} export default ModelVendedor;
